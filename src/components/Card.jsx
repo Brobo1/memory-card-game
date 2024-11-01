@@ -1,23 +1,30 @@
 import { useEffect, useState } from "react";
 import { getPokemon } from "./apiCalls.jsx";
+import "./Card.css";
 
-export function Card() {
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+export function Card(props) {
   const [pokemon, setPokemon] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getPokemon("ditto");
-      setPokemon({ name: data.species.name, img: data.sprites.front_default });
+      const data = await getPokemon(props.id);
+      const img = data.sprites.other.dream_world.front_default;
+      setPokemon({ name: capitalize(data.name), img: img });
       console.log(data);
     }
-    fetchData().catch((err) => console.log(err));
-  }, []);
+
+    fetchData().catch((err) => setPokemon({ name: err.toString() }));
+  }, [props.id]);
 
   return (
     <>
-      <div>
-        <p>{pokemon.name}</p>
-        <img src={pokemon.img} alt="" />
+      <div className={"card-container"}>
+        <p className={"card-name"}>{pokemon.name}</p>
+        <img className={"card-img"} src={pokemon.img} alt={pokemon.name} />
       </div>
     </>
   );
