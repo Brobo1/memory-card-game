@@ -1,12 +1,12 @@
 import "./App.css";
-import { getPokemon } from "./components/apiCalls.jsx";
-import { useEffect } from "react";
+import { Card } from "./components/Card.jsx";
 
 function App() {
-  useEffect(() => {
-    async () => console.log(getPokemon("ditto"));
-  }, []);
-  return <></>;
+  return (
+    <>
+      <Card />
+    </>
+  );
 }
 
 export default App;
