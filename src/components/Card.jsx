@@ -14,7 +14,6 @@ export function Card(props) {
       const data = await getPokemon(props.id);
       const img = data.sprites.other.dream_world.front_default;
       setPokemon({ name: capitalize(data.name), img: img });
-      console.log(data);
     }
 
     fetchData().catch((err) => setPokemon({ name: err.toString() }));

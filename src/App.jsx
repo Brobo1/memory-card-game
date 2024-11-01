@@ -1,12 +1,13 @@
 import "./App.css";
 import { Card } from "./components/Card.jsx";
 
+const ARR = Array.from({ length: 12 }, () => Math.floor(Math.random() * 500));
+
 function App() {
-  const arr = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100));
   return (
     <>
       <div className={"cards-container"}>
-        {arr.map((item, index) => (
+        {ARR.map((item, index) => (
           <Card key={index} id={item} />
         ))}
       </div>
