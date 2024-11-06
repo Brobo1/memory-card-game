@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import { getPokemon } from "./api/apiCalls.jsx";
 import { shuffle } from "./helper/funcs.js";
 
-const CARDAMT = 2;
-
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [pickedCards, setPickedCards] = useState([]);
@@ -16,12 +14,13 @@ function App() {
     lose: false,
   });
   const [reloadPokemon, setReloadPokemon] = useState(false);
+  const [difficulty, setDifficulty] = useState(10);
 
   useEffect(() => {
     async function fetchPokemon() {
       const rand = Math.floor(Math.random() * 200);
       const pokemonPromise = [];
-      for (let i = rand; i < rand + CARDAMT; i++) {
+      for (let i = rand; i < rand + difficulty; i++) {
         pokemonPromise.push(getPokemon(i.toString()));
       }
       const data = await Promise.all(pokemonPromise);
@@ -33,10 +32,10 @@ function App() {
       setReloadPokemon(false);
     }
 
-    if (pickedCards.length === CARDAMT) {
+    if (pickedCards.length === difficulty) {
       setGameState((prev) => ({ ...prev, win: true }));
     }
-  }, [pickedCards.length, pokemon.length, reloadPokemon]);
+  }, [difficulty, pickedCards.length, pokemon.length, reloadPokemon]);
 
   function shuffleHandler() {
     setPokemon((prevPokemon) => shuffle(prevPokemon));
@@ -85,6 +84,7 @@ function App() {
   }
 
   function reloadHandler() {
+    setPickedCards([]);
     setReloadPokemon(true);
   }
 
@@ -98,15 +98,16 @@ function App() {
         lost={gameState.lose}
         lostHandler={lostHandler}
       />
+
       <Game
         pokemon={pokemon}
         pickedCards={pickedCards}
         pickedHandler={pickedHandler}
         lost={gameState.lose}
+        difficulty={difficulty}
+        setDifficulty={setDifficulty}
+        reloadHandler={reloadHandler}
       />
-      <button className={"reload-btn"} onClick={reloadHandler}>
-        Reload Pokemon
-      </button>
     </>
   );
 }

@@ -1,5 +1,31 @@
-.score-container {
-  padding: 20px 0;
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-container,
+.difficulty-container,
+.reload-container {
+  padding: 20px 10px;
+}
+
+.difficulty-container {
+  display: flex;
+  gap: 20px;
+}
+.reload-container {
+  display: flex;
+  gap: 20px;
+}
+
+.difficulty-input {
+  text-align: center;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 500;
+  width: 40px;
+  border-radius: 5px;
+  border: none;
 }
 
 .score-text {
