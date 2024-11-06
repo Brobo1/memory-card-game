@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getPokemon } from "./api/apiCalls.jsx";
 import { shuffle } from "./helper/funcs.js";
 
-const CARDAMT = 2;
+const CARDAMT = 12;
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
