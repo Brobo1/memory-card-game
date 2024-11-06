@@ -11,6 +11,7 @@
   border-radius: 4px;
   text-align: center;
   transition: 200ms background-color;
+  user-select: none;
 }
 
 .card-name {
