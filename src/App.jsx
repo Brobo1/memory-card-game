@@ -62,7 +62,7 @@ function App() {
             lost={lost}
             name={capitalize(pokemon.name)}
             img={pokemon.sprites.other.dream_world.front_default}
-            onClick={lost ? () => {} : () => combineHandlers(pokemon.name)}
+            onClick={lost ? () => {} : () => pickedHandler(pokemon.name)}
           />
         ))}
       </div>
