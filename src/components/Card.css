@@ -35,10 +35,27 @@
 .card-name.lost {
   background-color: #500606;
 }
+@media (hover: hover) and (pointer: fine) {
+  .card:not(.lost):hover {
+    background-color: #272727;
+    .card-name {
+      background-color: #1a1a1a;
+    }
+  }
+}
 
-.card:not(.lost):hover {
-  background-color: #272727;
+@media screen and (max-width: 500px) {
+  .card {
+    padding: 5px;
+    gap: 5px;
+  }
   .card-name {
-    background-color: #1a1a1a;
+    font-size: 16px;
+    padding: 2px;
+    background-color: transparent;
+  }
+  .card-img {
+    height: 150px;
+    object-fit: fill;
   }
 }

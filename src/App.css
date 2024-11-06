@@ -28,3 +28,13 @@
   justify-items: center;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 500px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 2px;
+  }
+  .score-container {
+    padding: 10px 0;
+  }
+}
