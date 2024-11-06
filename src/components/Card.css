@@ -1,12 +1,15 @@
-.card-container {
+.card {
   display: flex;
   flex-direction: column;
-  width: 200px;
-  gap: 10px;
-  padding: 10px;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 20px;
   background-color: #1a1a1a;
   border: 1px solid #7e7e7e;
   border-radius: 4px;
+  text-align: center;
 }
 
 .card-name {
@@ -16,5 +19,9 @@
 
 .card-img {
   height: 200px;
-  width: 100%;
+  object-fit: fill;
+}
+
+.lost {
+  background-color: #6c3030;
 }
