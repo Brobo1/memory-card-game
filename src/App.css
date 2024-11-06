@@ -12,6 +12,11 @@
   font-size: 24px;
   background-color: #323232;
   width: fit-content;
+  transition: 200ms background-color;
+}
+
+.score-text.lost {
+  background-color: #591a1a;
 }
 
 .cards-container {
