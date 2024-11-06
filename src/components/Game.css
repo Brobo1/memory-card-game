@@ -1,0 +1,37 @@
+.score-container {
+  padding: 20px 0;
+}
+
+.score-text {
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 30px;
+  font-weight: 300;
+  background-color: #323232;
+  width: fit-content;
+  transition: 200ms background-color;
+}
+
+.score-text.lost {
+  background-color: #591a1a;
+}
+
+.cards-container {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 500px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 2px;
+  }
+  .score-container {
+    padding: 10px 0;
+  }
+}
