@@ -31,15 +31,27 @@ function App() {
       if (prevPickedCards.includes(e)) {
         setLost(true);
         return prevPickedCards;
-      } else return [...prevPickedCards, e];
+      } else {
+        shuffleHandler();
+        return [...prevPickedCards, e];
+      }
     });
-    console.log(pickedCards, lost);
   }
 
-  function combineHandlers(e) {
-    shuffleHandler();
-    pickedHandler(e);
-  }
+  // function combineHandlers(e) {
+  //   setPickedCards((prevPickedCards) => {
+  //     if (prevPickedCards.includes(e)) {
+  //       setLost(true);
+  //       return prevPickedCards;
+  //     } else {
+  //       const newPickedCards = [...prevPickedCards, e];
+  //       setPickedCards(newPickedCards);
+  //       // Only shuffle if game is not lost
+  //       shuffleHandler();
+  //       return newPickedCards;
+  //     }
+  //   });
+  // }
 
   return (
     <>
