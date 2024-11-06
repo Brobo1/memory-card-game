@@ -7,14 +7,21 @@
   box-sizing: border-box;
   padding: 20px;
   background-color: #1a1a1a;
-  border: 1px solid #7e7e7e;
+  border: 1px solid #4a4a4a;
   border-radius: 4px;
   text-align: center;
+  transition: 200ms background-color;
 }
 
 .card-name {
-  padding: 0;
-  margin: 0;
+  border-radius: 5px;
+  padding: 2px 10px;
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: #2b2b2b;
+  transition: 200ms background-color;
 }
 
 .card-img {
@@ -22,6 +29,16 @@
   object-fit: fill;
 }
 
-.lost {
-  background-color: #6c3030;
+.card.lost {
+  background-color: #591a1a;
+}
+.card-name.lost {
+  background-color: #500606;
+}
+
+.card:not(.lost):hover {
+  background-color: #2b2b2b;
+  .card-name {
+    background-color: #1a1a1a;
+  }
 }

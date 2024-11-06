@@ -29,7 +29,7 @@ function App() {
   function pickedHandler(e) {
     setPickedCards((prevPickedCards) => {
       if (pickedCards.includes(e)) {
-        // setLost(true);
+        setLost(true);
         setPokemon((prevState) =>
           prevState.map((p) => {
             if (p.name === e) {
