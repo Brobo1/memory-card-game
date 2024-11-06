@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { getPokemon } from "../api/apiCalls.jsx";
-import { capitalize, shuffle } from "../helper/funcs.js";
+import { capitalize } from "../helper/funcs.js";
 import { Card } from "./Card.jsx";
 import "./Game.css";
 

@@ -5,22 +5,48 @@
 }
 
 #popup-container {
+  user-select: none;
   position: absolute;
   top: 50%;
   left: 50%;
-  translate: -50%;
-  height: 200px;
-  width: 200px;
-  backdrop-filter: blur(2px);
+  translate: -50% -80%;
+  height: fit-content;
+  width: fit-content;
+  backdrop-filter: blur(9px);
   border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(48, 48, 48, 0.65);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 40px;
+  gap: 50px;
+  animation-name: popup-drop;
+  animation-duration: 500ms;
+}
+
+.popup-text {
+  padding: 0;
+  margin: 0;
 }
 
 .popup-btn {
-  width: 100px;
+  width: 150px;
+  font-size: 20px;
+}
+
+@keyframes popup-drop {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+
+  50% {
+    top: 60%;
+  }
+
+  100% {
+    opacity: 1;
+    top: 50%;
+  }
 }

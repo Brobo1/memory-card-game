@@ -6,15 +6,14 @@ import { getPokemon } from "./api/apiCalls.jsx";
 import { shuffle } from "./helper/funcs.js";
 
 function App() {
+  const [pokemon, setPokemon] = useState([]);
+  const [pickedCards, setPickedCards] = useState([]);
+  const [lost, setLost] = useState(false);
   const [gameState, setGameState] = useState({
     startGame: false,
     win: false,
     lose: false,
   });
-
-  const [pokemon, setPokemon] = useState([]);
-  const [pickedCards, setPickedCards] = useState([]);
-  const [lost, setLost] = useState(false);
 
   useEffect(() => {
     async function fetchPokemon() {
@@ -36,7 +35,8 @@ function App() {
   function pickedHandler(e) {
     setPickedCards((prevPickedCards) => {
       if (pickedCards.includes(e)) {
-        setLost(true);
+        // setLost(true);
+        setGameState((prev) => ({ ...prev, lose: true }));
         setPokemon((prevState) =>
           prevState.map((p) => {
             if (p.name === e) {
@@ -62,8 +62,16 @@ function App() {
   function winHandler() {
     setGameState((prevState) => ({
       ...prevState,
-      win: !prevState.win,
+      win: false,
     }));
+  }
+  function lostHandler() {
+    setGameState((prevState) => ({
+      ...prevState,
+      lose: false,
+    }));
+    setPickedCards([]);
+    setPokemon((prev) => prev.map((p) => ({ ...p, lost: false })));
   }
 
   return (
@@ -73,12 +81,14 @@ function App() {
         startHandler={startHandler}
         win={gameState.win}
         winHandler={winHandler}
+        lost={gameState.lose}
+        lostHandler={lostHandler}
       />
       <Game
         pokemon={pokemon}
         pickedCards={pickedCards}
         pickedHandler={pickedHandler}
-        lost={lost}
+        lost={gameState.lose}
       />
     </>
   );

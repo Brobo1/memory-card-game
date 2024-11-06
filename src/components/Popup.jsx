@@ -13,12 +13,22 @@ export function Popup(props) {
           </div>
         </div>
       )}
-      {!props.win && (
+      {props.win && (
         <div id={"popup-backdrop"}>
           <div id="popup-container">
-            <p>PLAYYYY</p>
+            <p>Great memory! Great Success! </p>
             <button className={"popup-btn"} onClick={props.winHandler}>
-              Start
+              Start2
+            </button>
+          </div>
+        </div>
+      )}
+      {props.lost && (
+        <div id={"popup-backdrop"}>
+          <div id="popup-container">
+            <h1 className={"popup-text"}>You lost :(</h1>
+            <button className={"popup-btn"} onClick={props.lostHandler}>
+              Try again!
             </button>
           </div>
         </div>
