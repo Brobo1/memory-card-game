@@ -4,7 +4,7 @@ export function Card(props) {
   return (
     <>
       <div
-        className={`card ${props.lost ? "lost" : ""}`}
+        className={`card ${props.lost ? "lost" : props.win ? "win" : ""}`}
         onClick={props.onClick}
       >
         <p className={`card-name ${props.lost ? "lost" : ""}`}>{props.name}</p>

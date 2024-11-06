@@ -30,6 +30,9 @@
   margin: 0;
 }
 
+h1 {
+  text-align: center;
+}
 .popup-btn {
   width: 150px;
   font-size: 20px;
