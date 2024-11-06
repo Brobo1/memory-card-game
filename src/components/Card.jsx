@@ -8,7 +8,12 @@ export function Card(props) {
         onClick={props.onClick}
       >
         <p className={`card-name ${props.lost ? "lost" : ""}`}>{props.name}</p>
-        <img className={"card-img"} src={props.img} alt={props.name} />
+        <img
+          className={"card-img"}
+          src={props.img}
+          alt={props.name}
+          draggable={false}
+        />
       </div>
     </>
   );
