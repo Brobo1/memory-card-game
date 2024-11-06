@@ -63,6 +63,11 @@ function App() {
 
   return (
     <>
+      <div className={"score-container"}>
+        <p className={`score-text ${lost ? "lost" : ""}`}>
+          Score: {pickedCards.length}/{pokemon.length}
+        </p>
+      </div>
       <div className={"cards-container"}>
         {pokemon.map((pokemon, index) => (
           <Card

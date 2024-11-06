@@ -20,7 +20,7 @@
   width: fit-content;
   font-size: 20px;
   font-weight: 400;
-  background-color: #2b2b2b;
+  background-color: #232323;
   transition: 200ms background-color;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .card:not(.lost):hover {
-  background-color: #2b2b2b;
+  background-color: #272727;
   .card-name {
     background-color: #1a1a1a;
   }
