@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getPokemon } from "./api/apiCalls.jsx";
 import { shuffle } from "./helper/funcs.js";
 
-const CARDAMT = 12;
+const CARDAMT = 2;
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -15,6 +15,7 @@ function App() {
     win: false,
     lose: false,
   });
+  const [reloadPokemon, setReloadPokemon] = useState(false);
 
   useEffect(() => {
     async function fetchPokemon() {
@@ -26,26 +27,23 @@ function App() {
       const data = await Promise.all(pokemonPromise);
       setPokemon(data);
     }
-    if (pickedCards.length === 0) {
+
+    if ((pickedCards.length === 0 && pokemon.length === 0) || reloadPokemon) {
       fetchPokemon().catch((err) => console.log(err));
+      setReloadPokemon(false);
     }
 
     if (pickedCards.length === CARDAMT) {
       setGameState((prev) => ({ ...prev, win: true }));
     }
-  }, [pickedCards.length]);
+  }, [pickedCards.length, pokemon.length, reloadPokemon]);
 
   function shuffleHandler() {
     setPokemon((prevPokemon) => shuffle(prevPokemon));
   }
   function pickedHandler(e) {
     setPickedCards((prevPickedCards) => {
-      // if (pickedCards.length === CARDAMT) {
-      //   setGameState((prev) => ({ ...prev, win: true }));
-      //   return prevPickedCards;
-      // }
       if (pickedCards.includes(e)) {
-        // setLost(true);
         setGameState((prev) => ({ ...prev, lose: true }));
         setPokemon((prevState) =>
           prevState.map((p) => {
@@ -86,6 +84,10 @@ function App() {
     setPokemon((prev) => prev.map((p) => ({ ...p, lost: false })));
   }
 
+  function reloadHandler() {
+    setReloadPokemon(true);
+  }
+
   return (
     <>
       <Popup
@@ -102,6 +104,9 @@ function App() {
         pickedHandler={pickedHandler}
         lost={gameState.lose}
       />
+      <button className={"reload-btn"} onClick={reloadHandler}>
+        Reload Pokemon
+      </button>
     </>
   );
 }
