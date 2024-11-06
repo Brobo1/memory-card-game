@@ -28,8 +28,16 @@ function App() {
 
   function pickedHandler(e) {
     setPickedCards((prevPickedCards) => {
-      if (prevPickedCards.includes(e)) {
-        setLost(true);
+      if (pickedCards.includes(e)) {
+        // setLost(true);
+        setPokemon((prevState) =>
+          prevState.map((p) => {
+            if (p.name === e) {
+              return { ...p, lost: true };
+            }
+            return p;
+          }),
+        );
         return prevPickedCards;
       } else {
         shuffleHandler();
@@ -59,7 +67,7 @@ function App() {
         {pokemon.map((pokemon, index) => (
           <Card
             key={index}
-            lost={lost}
+            lost={pokemon.lost}
             name={capitalize(pokemon.name)}
             img={pokemon.sprites.other.dream_world.front_default}
             onClick={lost ? () => {} : () => pickedHandler(pokemon.name)}
