@@ -6,9 +6,11 @@ export function Popup(props) {
       {!props.start && (
         <div id={"popup-backdrop"}>
           <div id="popup-container">
-            <div className="text">
+            <div className="text-container">
               <h1>Memory Game</h1>
-              <p>The objective is to avoid clicking the same pokemon twice</p>
+              <p className={"rules"}>
+                The objective is to avoid clicking the same pokemon twice
+              </p>
             </div>
             <button className={"popup-btn"} onClick={props.startHandler}>
               Start
